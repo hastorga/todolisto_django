@@ -39,9 +39,18 @@ Respecto a la ejecucion:
   * Se debe crear obligatoriamente un usuario con username: 'admin', quien será el administrador del sistema
 
 Respecto a los controladores:
+  * El sistema cuenta con los siguientes controladores:
+    - admin
+    - tarea
+    - index
+    - register
+    - eliminarTarea
+    - detalleTarea
+    - crearTarea
+    - EditarTarea
+    - calendario
 
-  * COMPLETAR
-
+  
 Respecto a los modelos:
 
   * El sistema cuenta con tres modelos:
