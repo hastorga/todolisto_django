@@ -99,10 +99,9 @@
                <td>{{tarea.descripcion}}</td>
 
                <td>
-
-                  <a class="btn btn-info" href="{% url 'detalleTarea' tarea.id %}">Detalle</a>
+                  <a class="btn btn-info" href="{% url 'detalleTarea' %}?id={{ tarea.id }}">Detalle</a>
                   <a class="btn btn-warning" href="{% url 'editarTarea' tarea.id %}">Editar</a>
-                  <a class="btn btn-danger" href="{% url 'eliminarTarea' tarea.id %}">Eliminar</a>
+                  <a class="btn btn-danger" href="{% url 'eliminarTarea'%}?id={{ tarea.id }}">Eliminar</a>
               </td>
 
             {% endfor %}

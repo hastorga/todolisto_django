@@ -89,13 +89,15 @@ def crear_tarea(request):
         messages.error(request,'La fecha de término debe ser posterior a la fecha de inicio!')
         return render(request, "tareas.html", { 'tareas' : tareas, 'tipos': tipos, 'estados': estados})
 
-
-
-@method_decorator(login_required, name='get')
-class EliminarTarea(DeleteView):
-	model = Tarea
-	template_name = 'eliminarTarea.html'
-	success_url = reverse_lazy('tareas')
+@login_required
+@require_GET
+def eliminarTarea(request):
+    tarea = Tarea.objects.get(pk=request.GET.get("id"))
+    if tarea.usuario == request.user:
+        tarea.delete()
+        return render(request,'eliminarTarea.html')
+    else:
+        return HttpResponse("El elemento no existe o no tiene permiso")
 
 @method_decorator(login_required, name='get')
 class EditarTarea(UpdateView):
@@ -104,10 +106,16 @@ class EditarTarea(UpdateView):
 	template_name = 'formTarea.html'
 	success_url = reverse_lazy('tareas')
 
-@method_decorator(login_required, name='get')
-class DetalleTarea(DetailView):
-	model = Tarea
-	template_name = 'detalleTarea.html'
+@login_required
+@require_GET
+def detalleTarea(request):
+    estados = EstadoTarea.objects.all().order_by('nombre')
+    tipos = TipoTarea.objects.all().order_by('nombre')
+    tarea = Tarea.objects.get(pk=request.GET.get("id"))
+    if request.user == tarea.usuario:
+        return render(request, 'detalleTarea.html', { 'tarea': tarea, 'estados': estados, 'tipos': tipos })
+    else:
+        return HttpResponse("El elemento no existe o no tiene permiso")
 
 @login_required()
 def calendario(request):

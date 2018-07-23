@@ -1,10 +1,7 @@
 {% extends 'baseConectado.html' %}
 
 {% block content %}
-<form method="post">
 	{% csrf_token %}
-	<h3>¿Desea eliminar el registro?</h3>	
-	<button class="btn btn-danger" type="submit">Aceptar</button>
-	<a class= "btn btn-default" href="{% url 'tareas' %}">Cancelar</a>
-</form>
+	<h1>La tarea se eliminó correctamente </h1>
+	<a class= "btn btn-default" href="{% url 'tareas' %}"> Ir a vista de tareas</a>
 {% endblock %}
