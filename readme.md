@@ -33,7 +33,9 @@ Respecto a la ejecucion:
 
   * Se debe activar el proyecto en la consola de anaconda (Anaconda Prompt):
     - source activate todolisto
-    - cd todolisto
+  * Acceder mediante consola a la carpeta principal del proyecto descargado.
+    - Ejemplo: cd Documents/GitHub/todolisto_django-master
+  * Una vez en la carpeta principal, correr el servidor con:
     - python manage.py runserver
   
   * Se debe crear obligatoriamente un usuario con username: 'admin', quien será el administrador del sistema
